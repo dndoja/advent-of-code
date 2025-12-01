@@ -1,0 +1,7 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+IndentWidth: 4
+AllowShortIfStatementsOnASingleLine: WithoutElse
+# AllowShortCaseExpressionOnASingleLine: True
+# AllowShortCaseLabelsOnASingleLine: true
