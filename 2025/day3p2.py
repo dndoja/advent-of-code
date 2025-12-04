@@ -1,11 +1,11 @@
 import math
 
+result = 0
 batteries = []
-with open("day3/input.txt") as file:
+with open("day3.txt") as file:
     for line in file:
         batteries.append([int(char) for char in line.strip()])
 
-result = 0
 
 for battery in batteries:
     left = -1

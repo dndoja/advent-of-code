@@ -1,6 +1,6 @@
 rots = []
 
-with open("day1/input.txt") as file:
+with open("day1.txt") as file:
     for line in file:
         rots.append((1 if line[0:1] == "R" else -1, int(line[1:])))
 
