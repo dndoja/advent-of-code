@@ -2,7 +2,7 @@ result = 0
 ranges = []
 ingredients = []
 
-with open("day5.txt") as file:
+with open("day05.txt") as file:
     for line in file:
         split = line.split("-")
         if len(split) == 2:

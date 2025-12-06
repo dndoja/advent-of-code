@@ -3,7 +3,7 @@ operands = []
 operators = []
 lines = []
 
-with open("day6.txt") as file:
+with open("day06.txt") as file:
     for line in file:
         lines.append(list(line))
 

@@ -3,7 +3,7 @@ import aoc2d as xy
 result = 0
 grid = []
 
-with open("day4.txt") as file:
+with open("day04.txt") as file:
     width, height = 0, 0
     for line in file:
         height += 1

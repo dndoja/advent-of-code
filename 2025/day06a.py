@@ -2,7 +2,7 @@ result = 0
 operands = []
 operators = []
 
-with open("day6.txt") as file:
+with open("day06.txt") as file:
     for line in file:
         chars = list(line.strip().split(" "))
         col = 0

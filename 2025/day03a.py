@@ -1,6 +1,6 @@
 result = 0
 batteries = []
-with open("day3.txt") as file:
+with open("day03.txt") as file:
     for line in file:
         batteries.append([int(char) for char in line.strip()])
 

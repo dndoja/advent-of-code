@@ -2,7 +2,7 @@ import math
 
 result = 0
 seqs = []
-with open("day2.txt") as file:
+with open("day02.txt") as file:
     for pair in file.read().split(","):
         split = pair.split("-")
         seqs.append((int(split[0]), int(split[1])))
