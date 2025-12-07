@@ -1,17 +1,16 @@
 import aoc2d as xy
 
 result = 0
-grid = []
+grid = None
 
 with open("day04.txt") as file:
     height = 0
-    width = 0
+    flatdata = []
     for line in file:
         height += 1
-        width = len(line.strip())
         for char in line.strip():
-            grid.append(char == "@")
-    xy.init(width, height)
+            flatdata.append(char == "@")
+    grid = xy.Grid(flatdata, height)
 
 
 for i in range(len(grid)):
