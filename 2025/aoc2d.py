@@ -1,3 +1,21 @@
+class Vec2:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+class Vec3:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __str__(self):
+        return f"({self.x}, {self.y}, {self.z})"
+
+
 class Grid:
     def __init__(self, flat_data, height, set_global=True):
         self.data = flat_data
