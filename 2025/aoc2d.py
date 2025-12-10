@@ -6,6 +6,10 @@ class Vec2:
     def __str__(self):
         return f"({self.x}, {self.y})"
 
+    def __repr__(self):
+        return str(self)
+
+
 class Vec3:
     def __init__(self, x, y, z):
         self.x = x
@@ -14,6 +18,45 @@ class Vec3:
 
     def __str__(self):
         return f"({self.x}, {self.y}, {self.z})"
+
+    def __repr__(self):
+        return str(self)
+
+
+class Segment:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        self.min_x = min(a.x, b.x)
+        self.max_x = max(a.x, b.x)
+        self.min_y = min(a.y, b.y)
+        self.max_y = max(a.y, b.y)
+
+        self.isVertical = False
+
+        if a.x == b.x:
+            self.isVertical = True
+        else:
+            self.slope = (b.y - a.y) / (b.x - a.x)
+            self.yIntercept = a.y - self.slope * a.x
+
+    def y(self, x):
+        return self.slope * x + self.yIntercept
+
+    def __str__(self):
+        return f"[{self.a}; {self.b}]"
+
+    def __repr__(self):
+        return str(self)
+
+    def contains(self, pt):
+        min_x = min(self.a.x, self.b.x)
+        max_x = max(self.a.x, self.b.x)
+        min_y = min(self.a.y, self.b.y)
+        max_y = max(self.a.y, self.b.y)
+        c = min_x <= pt.x <= max_x and min_y <= pt.y <= max_y
+
+        return c
 
 
 class Grid:

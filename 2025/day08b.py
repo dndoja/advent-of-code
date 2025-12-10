@@ -9,9 +9,6 @@ def dist(p1, p2):
 
 
 with open("day08.txt") as file:
-    height = 0
-    flatdata = []
-
     for line in file:
         split = line.strip().split(",")
         boxes.append(Vec3(int(split[0]), int(split[1]), int(split[2])))
