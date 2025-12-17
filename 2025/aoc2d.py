@@ -9,6 +9,9 @@ class Vec2:
     def __repr__(self):
         return str(self)
 
+    def __add__(self, other):
+        return Vec2(self.x + other.x, self.y + other.y)
+
 
 class Vec3:
     def __init__(self, x, y, z):
@@ -21,6 +24,45 @@ class Vec3:
 
     def __repr__(self):
         return str(self)
+
+
+class Rect:
+    def __init__(self, l, t, r, b):
+        self.l = l
+        self.t = t
+        self.r = r
+        self.b = b
+
+    def expand(self, x, y):
+        if x < self.l:
+            self.l = x
+        if x > self.r:
+            self.r = x
+        if y < self.t:
+            self.t = y
+        if y > self.b:
+            self.b = y
+        return self
+
+    @property
+    def width(self):
+        return self.r - self.l + 1
+
+    @property
+    def height(self):
+        return self.b - self.t + 1
+
+    def area(self):
+        return self.width * self.height
+
+    def copy(self):
+        return Rect(self.l, self.t, self.r, self.b)
+
+    def __str__(self):
+        return f"T:{self.t} L:{self.l} W:{self.width} H:{self.height}"
+
+    def __repr__(self):
+        return self.__str__()
 
 
 class Segment:
@@ -77,6 +119,9 @@ class Grid:
     def __len__(self):
         return len(self.data)
 
+    def copy(self):
+        return Grid([*self.data], self.height)
+
 
 __grid__ = Grid([], 0)
 
@@ -92,6 +137,8 @@ adjecent_offsets = [
     (-1, 1),
 ]
 
+adjecent_offsets_cartesian = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+
 
 def flatten(x, y):
     return y * __grid__.width + x
@@ -101,10 +148,10 @@ def unflatten(i):
     return (i % __grid__.width, i // __grid__.width)
 
 
-def neighbours(x, y):
-    for dx, dy in adjecent_offsets:
+def neighbours(x, y, cartesian=False, include_oob=False):
+    for dx, dy in adjecent_offsets_cartesian if cartesian else adjecent_offsets:
         nx, ny = x + dx, y + dy
-        if in_bounds(nx, ny):
+        if include_oob or in_bounds(nx, ny):
             yield (nx, ny)
 
 
